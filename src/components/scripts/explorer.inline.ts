@@ -287,7 +287,7 @@ async function handleNavOrRender(e) {
           console.warn("[Explorer] No trie or empty children");
         }
 
-        // restore scrollTop position or scroll to active element  
+        // restore scrollTop position or scroll to active element
         const scrollTop = sessionStorage.getItem("explorerScrollTop");
         if (scrollTop) {
           explorerUl.scrollTop = parseInt(scrollTop, 10);
