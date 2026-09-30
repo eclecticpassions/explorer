@@ -287,14 +287,16 @@ async function handleNavOrRender(e) {
           console.warn("[Explorer] No trie or empty children");
         }
 
-        // restore scrollTop position or scroll to active element
+        // restore scrollTop position or scroll to active element  
         const scrollTop = sessionStorage.getItem("explorerScrollTop");
         if (scrollTop) {
           explorerUl.scrollTop = parseInt(scrollTop, 10);
         } else {
           const activeElement = explorerUl.querySelector(".active");
           if (activeElement) {
-            activeElement.scrollIntoView({ behavior: "smooth" });
+            const top =
+              activeElement.getBoundingClientRect().top - explorerUl.getBoundingClientRect().top;
+            explorerUl.scrollTop += top;
           }
         }
       } else {
